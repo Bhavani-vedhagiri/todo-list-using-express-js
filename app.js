@@ -1,18 +1,19 @@
 const express = require("express");
 const app = express();
+const serverless = require('serverless-http');
+
 const connectDB = require("../todo-list/database/index")
 const dotenv = require("dotenv");
 dotenv.config();
 
 const taskRoute = require("../todo-list/routes/task");
-const serverless = require('serverless-http');
 
 // middleware
 app.use(express.static("./public"));
 app.use(express.json());
-
+  
 // external routes
-app.use("/.netlify/api/v1/tasks", taskRoute);
+app.use("/.netlify/functions/api/v1/tasks", taskRoute);
 
 const start = async () => {
   try {
@@ -25,7 +26,7 @@ const start = async () => {
     console.log(err);
   }
 };
-module.exports = app;
+
 module.exports.handler = serverless(app);
 
-start();
+// start();
