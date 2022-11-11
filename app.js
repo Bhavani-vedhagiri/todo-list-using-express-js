@@ -11,7 +11,7 @@ app.use(express.static("./public"));
 app.use(express.json());
   
 // external routes
-app.use("/.netlify.com/api/v1/tasks", taskRoute);
+app.use("/.netlify.app/api/v1/tasks", taskRoute);
 
 const start = async () => {
   try {
