@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
-const connectDB = require("../database/index");
+const connectDB = require("../todo-list/database/index")
 const dotenv = require("dotenv");
 dotenv.config();
 
-const taskRoute = require("../routes/task");
+const taskRoute = require("../todo-list/routes/task");
 
 // middleware
 app.use(express.static("./public"));
